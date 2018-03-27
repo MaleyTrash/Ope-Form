@@ -6,7 +6,33 @@
         xmlns:local="clr-namespace:Form"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <Label Content="Name:"/>
+        <TextBox TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding NameCorrect}" Value="False">
+                            <Setter Property="Foreground" Value="Red"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Label Content="Gender:"/>
+        <TextBox TextWrapping="Wrap" Text="{Binding Gender, UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding GenderCorrect}" Value="False">
+                            <Setter Property="Foreground" Value="Red"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Label Content="Born:"/>
+        <DatePicker SelectedDate="{Binding Date, UpdateSourceTrigger=PropertyChanged}" />
+        <Button Content="Ha" Command="{Binding SaveDataCommand}"/>
+    </StackPanel>
 </Window>
